@@ -12,6 +12,7 @@ body {
 }
 
 #minicircle {
+  pointer-events: none;
   transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
   width: 10px;
   height: 10px;
@@ -188,6 +189,7 @@ body {
   padding: 20vw 5vw;
   padding-left: 40vw;
   padding-right: 10vw;
+  padding-top: 30vw;
   width: 100%;
   color: white;
   background-color: black;
