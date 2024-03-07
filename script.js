@@ -1,4 +1,5 @@
 var timeout;
+let mini = document.querySelector("#minicircle");
 
 const scroll = new LocomotiveScroll({
   el: document.querySelector("#main"),
@@ -30,7 +31,7 @@ function firstPageAnim() {
     });
 }
 
-function circleChaptaKaro() {
+function circlemousephysics() {
   // define default scale value
   var xscale = 1;
   var yscale = 1;
@@ -65,13 +66,14 @@ function circleMouseFollower(xscale, yscale) {
   });
 }
 
-circleChaptaKaro();
+circlemousephysics();
 circleMouseFollower();
 firstPageAnim();
 
+////////    COOL IMAGE HOVER ANIMATION //////
 document.querySelectorAll(".elem").forEach(function (elem) {
-  var rotate = 0;
-  var diffrot = 0;
+  let rotate = 0;
+  let diffrot = 0;
 
   elem.addEventListener("mouseleave", function (dets) {
     gsap.to(elem.querySelector("img"), {
@@ -79,10 +81,16 @@ document.querySelectorAll(".elem").forEach(function (elem) {
       ease: Power3,
       duration: 0.5,
     });
+    mini.querySelector("p").style.display = "none";
+    mini.style.width = "10px";
+    mini.style.height = "10px";
+    // gsap.to(mini.querySelector("p"), {
+    //   opacity: 0,
+    // });
   });
 
   elem.addEventListener("mousemove", function (dets) {
-    var diff = dets.clientY - elem.getBoundingClientRect().top;
+    let diff = dets.clientY - elem.getBoundingClientRect().top;
     diffrot = dets.clientX - rotate;
     rotate = dets.clientX;
     gsap.to(elem.querySelector("img"), {
@@ -92,5 +100,11 @@ document.querySelectorAll(".elem").forEach(function (elem) {
       left: dets.clientX,
       rotate: gsap.utils.clamp(-20, 20, diffrot * 0.5),
     });
+    mini.style.width = "100px";
+    mini.style.height = "100px";
+    mini.querySelector("p").style.display = "block";
+    // gsap.to(mini.querySelector("p"), {
+    //   opacity: 1,
+    // });
   });
 });
